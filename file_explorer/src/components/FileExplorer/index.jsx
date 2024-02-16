@@ -4,11 +4,11 @@ import styles from "./index.module.scss";
 
 const FileExplorer = ({ explorer }) => {
   const [folderCollapse, setFolderCollapse] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [showInput, setShowInput] = useState({
     visible: false,
     icon: null,
-    fileType: '',
+    fileType: "",
   });
   const onHandleCreateNewFileFolder = (evt) => {
     const isFolder = evt?.target?.name === "folder";
@@ -16,45 +16,43 @@ const FileExplorer = ({ explorer }) => {
       ...showInput,
       icon: getFileIcon(isFolder),
       visible: true,
-      fileType: isFolder ? 'folder' : 'file',
-    })
+      fileType: isFolder ? "folder" : "file",
+    });
     setFolderCollapse(true);
-  }
+  };
   const onhandleBlur = () => {
     resetInputData();
-  }
+  };
   const resetInputData = () => {
     setShowInput({
       ...showInput,
       visible: false,
       icon: null,
-    })
-    setInputValue('');
-  }
+    });
+    setInputValue("");
+  };
   const onHandleInputValue = (evt) => {
-    const { 
+    const {
       type,
-      target: {
-        value,
-      },
+      target: { value },
       keyCode,
     } = evt;
-    if (type === 'change') {
-      setInputValue(value)
+    if (type === "change") {
+      setInputValue(value);
     }
     if (keyCode === 13) {
       updateExplorerData();
       resetInputData();
     }
-  }
+  };
   const updateExplorerData = () => {
     explorer.items.unshift({
       id: crypto.randomUUID(),
       name: inputValue,
-      isFolder: showInput?.fileType === 'folder',
+      isFolder: showInput?.fileType === "folder",
       items: [],
-    })
-  }
+    });
+  };
   const getFileIcon = (isFolder) => (isFolder ? "📁" : "📄");
   return (
     <section className={styles.fileExplorerContainer}>
@@ -73,8 +71,12 @@ const FileExplorer = ({ explorer }) => {
             className={styles.createButtons}
             onClick={(e) => onHandleCreateNewFileFolder(e)}
           >
-            <button name="file"> 📄 </button>
-            <button name="folder"> 📁 </button>
+            <button name="file" className={styles.file}>
+              <span>+ 📄</span>
+            </button>
+            <button name="folder" className={styles.file}>
+              <span>+ 📁</span>
+            </button>
           </div>
         )}
       </div>
@@ -82,7 +84,7 @@ const FileExplorer = ({ explorer }) => {
       {/* recursive items */}
       {explorer.isFolder && folderCollapse && (
         <>
-          {showInput?.visible  && (
+          {showInput?.visible && (
             <section className={styles.inputContainer}>
               <span>{showInput?.icon}</span>
               <input

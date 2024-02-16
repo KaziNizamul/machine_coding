@@ -6,6 +6,10 @@
     .createButtons {
       display: flex;
       gap: 0.5rem;
+      .file {
+        background-color: whitesmoke;
+        border: none;
+      }
     }
     .folderStyle {
       background-color: rgb(211, 211, 211);
