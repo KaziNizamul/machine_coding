@@ -48,7 +48,7 @@ const FileExplorer = ({ explorer }) => {
     }
   }
   const updateExplorerData = () => {
-    explorer.items.push({
+    explorer.items.unshift({
       id: crypto.randomUUID(),
       name: inputValue,
       isFolder: showInput?.fileType === 'folder',
