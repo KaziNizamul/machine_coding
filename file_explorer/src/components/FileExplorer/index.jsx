@@ -72,10 +72,10 @@ const FileExplorer = ({ explorer }) => {
             onClick={(e) => onHandleCreateNewFileFolder(e)}
           >
             <button name="file" className={styles.file}>
-              <span>+ 📄</span>
+              + 📄
             </button>
             <button name="folder" className={styles.file}>
-              <span>+ 📁</span>
+              + 📁
             </button>
           </div>
         )}
