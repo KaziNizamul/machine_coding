@@ -1,0 +1,59 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.loader {
+  height: 3rem;
+  width: 3rem;
+  border: 0.4rem solid gray;
+  border-top: 0.4rem solid skyblue;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.paginationContainer {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.imageSection {
+  background-color: rgb(206, 203, 203);
+  border-radius: 1rem;
+}
+
+.imageSection__image img {
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  object-fit: cover;
+}
+
+.paginationSection {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationSection .itemsPerPage {
+  padding: 0.7rem;
+  border: 1px solid #fff;
+  margin: 0.3rem;
+  cursor: pointer;
+}
+
+.paginationSection .selectedPage {
+  background-color: gray;
+}
